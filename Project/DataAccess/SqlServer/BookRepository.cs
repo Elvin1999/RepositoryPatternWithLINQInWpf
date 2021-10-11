@@ -19,7 +19,8 @@ namespace Project.DataAccess.SqlServer
 
         public Book GetData(int id)
         {
-            throw new NotImplementedException();
+            var book = DataContext.Books.FirstOrDefault(b => b.Id == id);
+            return book;
         }
         public ObservableCollection<Book> GetAllData()
         {
@@ -36,12 +37,16 @@ namespace Project.DataAccess.SqlServer
 
         public void UpdateData(Book data)
         {
-            throw new NotImplementedException();
+            var book = GetData(data.Id);
+            book = data;
+            DataContext.SubmitChanges();
+            
         }
 
         public void DeleteData(Book data)
         {
-            throw new NotImplementedException();
+            DataContext.Books.DeleteOnSubmit(data);
+            DataContext.SubmitChanges();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Project
         public MainWindow()
         {
             InitializeComponent();
-            var vm = new MainViewModel(new BookRepository());
+            var vm = new MainViewModel(new BookRepository(),new AuthorRepository());
             this.DataContext = vm;
         }
     }

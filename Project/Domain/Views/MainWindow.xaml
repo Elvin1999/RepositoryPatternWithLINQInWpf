@@ -16,6 +16,7 @@
                     <Label FontWeight="DemiBold" Margin="10,10" Width="120" Height="30" Content="Page Count"  FontSize="18"></Label>
                     <Label FontWeight="DemiBold" Margin="10,10" Width="120" Height="30" Content="Quantity"  FontSize="18"></Label>
                     <Label FontWeight="DemiBold" Margin="10,10" Width="120" Height="30" Content="YearPress"  FontSize="18"></Label>
+                    <Label FontWeight="DemiBold" Margin="10,10" Width="120" Height="30" Content="Author Name"  FontSize="18"></Label>
                 </StackPanel>
                 <StackPanel >
                     <TextBox Text="{Binding CurrentBook.Id,Mode=TwoWay}" Width="100" Height="30" FontSize="19" Margin="5,10" ></TextBox>
@@ -23,13 +24,18 @@
                     <TextBox Text="{Binding CurrentBook.Pages,Mode=TwoWay}" Width="100" Height="30" FontSize="19" Margin="5,12" ></TextBox>
                     <TextBox Text="{Binding CurrentBook.Quantity,Mode=TwoWay}" Width="100" Height="30" FontSize="19" Margin="5,12" ></TextBox>
                     <TextBox Text="{Binding CurrentBook.YearPress,Mode=TwoWay}" Width="100" Height="30" FontSize="19" Margin="5,5" ></TextBox>
+                    <ComboBox SelectedItem="{Binding CurrentAuthor}" ItemsSource="{Binding AllAuthors}" Margin="0,20,0,0" DisplayMemberPath="FirstName">
+                        
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button Command="{Binding AddCommand}" Margin="10" Padding="5" Width="100" FontSize="24">Add</Button>
+                    <Button Command="{Binding AddCommand}" Margin="5" Padding="5" Width="100" FontSize="24">Add</Button>
+                    <Button Command="{Binding UpdateCommand}" Margin="5" Padding="5" Width="100" FontSize="24">Update</Button>
+                    <Button Command="{Binding DeleteCommand}" Margin="5" Padding="5" Width="100" FontSize="24">Delete</Button>
                 </StackPanel>
             </StackPanel>
             
-            <ListView Background="SpringGreen" 
+            <ListView Background="SpringGreen"  SelectedItem="{Binding CurrentBook,Mode=TwoWay}"
                       ItemsSource="{Binding AllBooks}" Width="650" Margin="20"
                       Height="350"
                       >
@@ -42,7 +48,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Name" Width="300">
+                        <GridViewColumn Header="Name" Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Padding="5,2" Text="{Binding Name}" ></TextBlock>
@@ -67,6 +73,13 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Padding="5,2" Text="{Binding YearPress}" ></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Author" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Padding="5,2" Text="{Binding Author.FirstName}" ></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

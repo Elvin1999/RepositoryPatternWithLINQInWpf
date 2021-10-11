@@ -65,12 +65,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="DataAccess\SqlServer\AuthorRepository.cs" />
     <Compile Include="DataAccess\SqlServer\BookRepository.cs" />
     <Compile Include="DataAccess\SqlServer\DataClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Domain\Abstraction\IAuthorRepository.cs" />
     <Compile Include="Domain\Abstraction\IBookRepository.cs" />
     <Compile Include="Domain\Abstraction\IRepository.cs" />
     <Compile Include="Domain\AdditionalClasses\ObserverHelper.cs" />
